@@ -1,7 +1,20 @@
 const App = () => {
+  const log = [3, 5, 1, 4, 6];
+
   return (
     <div>
+      <DiceLogComponent log={log} />
       <DiceComponent />
+    </div>
+  );
+};
+
+const DiceLogComponent = (props) => {
+  return (
+    <div>
+      {props.log.map((value, index) => {
+        return <span>{value} </span>;
+      })}
     </div>
   );
 };
