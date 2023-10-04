@@ -10,7 +10,14 @@ const DiceComponent = () => {
   return (
     <div>
       <h1>주사위 컴포넌트</h1>
-      <button>클릭!</button>
+      <button
+        onClick={() => {
+          const num = Math.floor(Math.random() * 6 + 1);
+          alert(num);
+        }}
+      >
+        클릭!
+      </button>
     </div>
   );
 };
