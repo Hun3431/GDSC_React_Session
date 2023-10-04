@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 const App = () => {
-  const log = [3, 5, 1, 4, 6];
+  const [log, setLog] = useState([]);
 
   return (
     <div>
       <DiceLogComponent log={log} />
-      <DiceComponent />
+      <DiceComponent log={log} setLog={setLog} />
     </div>
   );
 };
@@ -12,6 +14,7 @@ const App = () => {
 const DiceLogComponent = (props) => {
   return (
     <div>
+      Log:
       {props.log.map((value, index) => {
         return <span>{value} </span>;
       })}
@@ -19,7 +22,7 @@ const DiceLogComponent = (props) => {
   );
 };
 
-const DiceComponent = () => {
+const DiceComponent = (props) => {
   return (
     <div>
       <h1>주사위 컴포넌트</h1>
@@ -27,6 +30,10 @@ const DiceComponent = () => {
         onClick={() => {
           const num = Math.floor(Math.random() * 6 + 1);
           alert(num);
+
+          const newLog = [...props.log];
+          newLog.push(num);
+          props.setLog(newLog);
         }}
       >
         클릭!
